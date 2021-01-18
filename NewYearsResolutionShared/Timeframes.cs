@@ -1,12 +1,9 @@
 ﻿namespace NewYearsResolutionShared
 {
-    public class Timeframes
+    public enum TimeFrame
     {
-        public enum TimeFrame
-        {
-            Weekly,
-            Monthly,
-            Yearly
-        }
+        Weekly,
+        Monthly,
+        Yearly
     }
 }

@@ -7,7 +7,6 @@ namespace NewYearsResolutionShared
         public int Id { get; set; }
         public String Name { get; set; }
         public String Metric { get; set; }
-        
-        public Timeframes Timeframe { get; set; }
+        public TimeFrame Timeframe { get; set; }
     }
 }

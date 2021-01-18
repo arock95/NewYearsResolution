@@ -1,0 +1,15 @@
+{
+  "ServerUri": "https://sonarcloud.io/",
+  "Organization": {
+    "Key": "arock95-github",
+    "Name": "arock95"
+  },
+  "ProjectKey": "arock95_NewYearsResolution",
+  "ProjectName": "NewYearsResolution",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AWohDFeRbZ-4oYCt2DoN",
+      "ProfileTimestamp": "2020-12-28T10:06:23Z"
+    }
+  }
+}
