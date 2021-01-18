@@ -8,9 +8,16 @@ namespace NewYearsResolutionAPI.DataAccess
 {
     public class Resolutions : IResolutions
     {
-        public Resolution AddResolution()
+        private readonly ResolutionsDbContext _db;
+        public Resolutions(ResolutionsDbContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
+        }
+        public Resolution AddResolution(Resolution res)
+        {
+            var new_res = _db.Resolutions.Add(res).Entity;
+            _db.SaveChanges();
+            return new_res;
         }
 
         public LoggedMetric AddValue(Resolution res, LoggedMetric metric)
@@ -20,12 +27,34 @@ namespace NewYearsResolutionAPI.DataAccess
 
         public bool DeleteResolution(Resolution res)
         {
-            throw new NotImplementedException();
+            if (FindResolution(res) != null)
+            {
+                _db.Resolutions.Remove(res);
+                return true;
+            }
+            return false;
+        }
+
+        public Resolution FindResolution(Resolution res)
+        {
+            return _db.Resolutions.FirstOrDefault(c => c.Id == res.Id);
         }
 
         public Resolution ModifyResolution(Resolution res)
         {
-            throw new NotImplementedException();
+            var res_to_mod = FindResolution(res);
+            if (res_to_mod != null)
+            {
+                res_to_mod.Metric = res.Metric;
+                res_to_mod.Name = res.Name;
+                res_to_mod.Timeframe = res.Timeframe;
+                _db.SaveChanges();
+                return res_to_mod;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
